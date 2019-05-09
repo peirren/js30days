@@ -83,13 +83,18 @@
     key.classList.add('playing'); // add.('選擇器')加入.playing 這個屬性class
     });
 
-    function removeTransition(e) {
-      if (e.propertyName !== 'transform') return; //skip it if it's not a transform!
-      console.log(e.propertyName);
-    }
+        function removeTransition(e) {
+          if(e.propertyName !== 'transform') return;
+          // console.log(this) 如果真的不知道是什麼，就console.log出來吧 
 
-    const keys = document.querySelectorAll('key');
-    keys.forEach(key => key.addEventListener('transitioned',removeTransition));
+          this.classList.remove('playing')
+        }
+
+    const keys = document.querySelectorAll('.key');
+    
+    keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+
+    
 </script>
 
 
